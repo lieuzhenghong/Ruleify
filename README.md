@@ -19,6 +19,6 @@ The power of Ruleify is that, you can make user-specifiable, customised animatio
 
     if (userWants == '45deg') { var deg = 45; }
     else { var deg = 90; }
-    rule.prop( '.animated', 'transform-y', '90deg');
+    rule.prop( '.animated', 'transform-y', deg);
 
 Tadah!
