@@ -17,8 +17,8 @@ Example: adding an animatable property to an element.
 
 The power of Ruleify is that, you can make user-specifiable, customised animations.
 
-    if (userWants == '45deg') { var deg = 45; }
-    else { var deg = 90; }
+    if (userWants == '45deg') { var deg = '45deg'; }
+    else { var deg = '90deg'; }
     rule.prop( '.animated', 'transform-y', deg);
 
 Tadah!
