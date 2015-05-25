@@ -33,21 +33,25 @@ rule.prop ( ruleName, propertyName, property) // adds property to ruleName
 <h2>Add classes dynamically</h2>
 <em>Good for custom animations!</em>
     
-<pre><code data-language = 'javascript'>rule.add( '.animated' );
-rule.prop( '.animated', '-webkit-transition', '2s');
-rule.prop( '.animated', 'transform-y', '45deg');
-
-if (userWants == '45deg'){ 
-    var deg = '45deg'; }
-else { var deg = '90deg'; }
-    rule.prop( '.animated', 'transform-y', deg);
-
+<pre><code data-language = 'javascript'>function anim (s, degrees) {
+    rule.add( '.animated' );
+    rule.prop( '.animated', '-webkit-transition', s + 's');
+    rule.prop( '.animated', 'transform-y', degrees + 'deg');
+}
 document.getElementById('element').classList.add = ('.animated');
 </code></pre>
 
 <h2>Ruleify at work</h2>
 <iframe src = 'test.html'></iframe>
-    
+   
+<pre><code data-language = 'javascript'>function anim() {
+    var time = 2;
+    var dist = 500;
+    rule.add( '.animated' );
+    rule.prop( '.animated', '-webkit-transition', time + 's' + ' ease-in-out');
+    rule.prop( '.animated', '-webkit-transform', 'translate(' + dist + 'px, 0)');
+    document.getElementById('element').classList.add('animated');
+}</code></pre></code></pre>
 
     
 <p>Download Ruleify.js <a href = "Ruleify.js" download>here</a>.</p>
