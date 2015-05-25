@@ -1,26 +1,56 @@
 <html>
 <head>
     <link rel = "stylesheet" type = "text/css" href = 'style.css'>
+    <link rel = 'stylesheet' type = 'text/css' href = './rainbow/dreamweaver.css'>
     <title>Ruleify.js</title>
 </head>
 <body>
 <h1>Ruleify.js</h1>
-<h3><a href = "Ruleify.js" download>Download Ruleify.js</a></h3>
-
-<p>This is a Javascript library that makes it very easy for one to get CSS rules of an element. 
-The traditional way of styling elements dynamically with javascript is to do element.style = '', but this only dynamically changes the _style_ of that element, and not the CSS class's style. </p>
-
-<p>This generates problems sometimes if you want to change the style of multiple elements (troublesome and unwieldy to iterate through each element with ClassName and changing). Changing the DOM like that can also be very slow when there are thousands of such elements. </p>
-
-<p>The other preferred way for adding CSS rules/properties directly is to have an unused CSS class and then attach that class to the element dynamically to it, something like element.ClassList.add('ClassName'); Very common in CSS transitions/animations control. The issue with this approach is that, since CSS does not take in variables, all your properties are fixed and immutable. So if you want to speed up or slow down a transition-time depending on user input, you cannot do that. </p>
-
-<p>Therefore, this library provides a nice way to add, delete and get CSS Rules dynamically. Add and Delete CSS rules are almost functionally identical to element.Classlist.add and element.ClassList.remove methods respectively. (Actually I am not sure whether to use that or deleteRule and addRule methods or what really is the difference).</p>
-
-<p>The power of this is that it can also add CSS properties. The way to do it is to get the CSS rule of a class say (.className), then use JS's inbuilt .style method to change the CSS rule of that class. This is much faster, more elegant, and also removing the style is easier (ClassList.remove as compared to trying to .style back to normal)</p>
-
-<p>I envision using this for user-specifiable animations.</p>
     
-<p>Download Ruleify.js <a href = "Ruleify.js" download>here</a>.</p>    
+<h2><a href = "Ruleify.js" download>Download Ruleify.js</a></h2>
+<h2><a href ="https://github.com/lieuzhenghong/Ruleify/">View on Github</a></h2>
+    
+<em>A miniscule Javascript library for making custom CSS rules</em>
+
+<h2>CSS Rules..?</h2>
+<p>What is a CSS Rule? A CSS Rule is just a selector. Here are some examples of selectors: 
+<pre><code data-language = 'javascript'>h2
+#navbar
+.animated</code></pre>
+    
+<h2>All of Ruleify</h2>
+<pre><code data-language = 'javascript'>rule.get( 'ruleName' ) //returns the rule
+rule.add( 'ruleName' ) //adds a CSS rule
+rule.kill( 'ruleName' ) //removes a CSS rule
+rule.prop ( ruleName, propertyName, property) // adds property to ruleName
+// rule.prop('h2', 'font-size', '4em'); </code></pre>
+
+    
+<h2>Generate CSS rules on-the-fly</h2>
+    <pre><code data-language = 'javascript'>rule.add( 'h2' ) // generates a CSS rule: h2 {}</code></pre>
+
+<h2>Add classes dynamically</h2>
+<em>Good for custom animations!</em>
+    
+<pre><code data-language = 'javascript'>rule.add( '.animated' );
+rule.prop( '.animated', '-webkit-transition', '2s');
+rule.prop( '.animated', 'transform-y', '45deg');
+
+if (userWants == '45deg'){ 
+    var deg = '45deg'; }
+else { var deg = '90deg'; }
+    rule.prop( '.animated', 'transform-y', deg);
+
+document.getElementById('element').classList.add = ('.animated');
+</code></pre>
+
+<h2>Ruleify at work</h2>
+<iframe src = 'test.html'></iframe>
+    
+
+    
+<p>Download Ruleify.js <a href = "Ruleify.js" download>here</a>.</p>
+<script src="./rainbow/rainbow.min.js"></script>
 </body>
 
 </html>
